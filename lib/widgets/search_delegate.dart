@@ -42,7 +42,6 @@ class PokemonSearchDelegate extends SearchDelegate {
         return ListTile(
           title: Text(pokemon.name),
           onTap: () {
-            // Handle tap on the result item
             Navigator.pop(context, pokemon);
           },
         );

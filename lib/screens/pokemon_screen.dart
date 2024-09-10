@@ -39,7 +39,7 @@ class _PokemonScreenState extends State<PokemonScreen> {
 
         if (data is List) {
           _allPokemons = data
-              .where((e) => e != null) // Szűrd ki a null elemeket
+              .where((e) => e != null)
               .map((e) => Pokemon.fromJson(e as Map<String, dynamic>))
               .toList();
         } else if (data is Map<String, dynamic>) {
@@ -66,7 +66,6 @@ class _PokemonScreenState extends State<PokemonScreen> {
 
   void _updateSearchQuery(String query) {
     setState(() {
-      //_searchQuery = query;
       _filteredPokemons = _allPokemons
           .where((pokemon) =>
               pokemon.name.toLowerCase().contains(query.toLowerCase()))
@@ -95,14 +94,6 @@ class _PokemonScreenState extends State<PokemonScreen> {
         ),
         backgroundColor: Colors.red,
         centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {
-              // Additional action if needed
-            },
-            icon: const Icon(Icons.search),
-          ),
-        ],
       ),
       body: _filteredPokemons.isEmpty
           ? const Center(child: Text('No Pokémon to show.'))
